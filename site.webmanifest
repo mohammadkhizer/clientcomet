@@ -1,0 +1,21 @@
+{
+  "name": "Miraculum Films",
+  "short_name": "Miraculum",
+  "description": "Professional media production company specializing in web series, podcasts, short films, feature films, and commercials.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#232323",
+  "theme_color": "#5D2DE6",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

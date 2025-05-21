@@ -1,0 +1,165 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --black: #000000;
+    --bg: #232323; /* User defined, not directly used by shadcn theme */
+    --brown: #6F3D2E; /* User defined, maps to theme secondary */
+    --text-brown: #D69667; /* User defined, maps to theme accent */
+    --gray: #999999; /* User defined */
+    --light-gray: #A4A4A4; /* User defined */
+    --toast-success: #195D51; /* User defined */
+    --toast-warning: #FF0000; /* User defined */
+    --white: #FFFFFF; /* User defined */
+    /* --purple: #5D2DE6; User defined, was old primary */
+    --bg-tint: #323232; /* User defined */
+    --bg-fields: #2B2B2B; /* User defined */
+    
+    /* Dark Theme (Default) based on user's HSL block */
+    --background: 0 0% 14%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 20%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 14%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 234 100% 76%; /* #8490FF */
+    --primary-foreground: 0 0% 98%; 
+    --secondary: 15 41% 31%; /* Corresponds to user's --brown: #6F3D2E */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 25 54% 62%; /* Corresponds to user's --text-brown: #D69667 */
+    --accent-foreground: 0 0% 14%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 25%;
+    --input: 0 0% 17%;
+    --ring: 234 100% 76%; /* #8490FF */
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 10%; /* Darker sidebar for dark theme */
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 234 100% 76%; /* #8490FF */
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 234 100% 76%; /* #8490FF */
+
+    /* Gradient from old purple (#5D2DE6 which is hsl(253, 78%, 54%)) to current accent */
+    --gradient-main: linear-gradient(to right, hsl(253, 78%, 54%), hsl(var(--accent)));
+  }
+
+  .light {
+    /* Light Theme based on user's HSL block & specific hex overrides */
+    --background: 227 67% 96%; /* #f0f2f9 Very light indigo */
+    --foreground: 225 25% 15%; /* Dark gray-blue for readability */
+    --card: 0 0% 100%; /* White cards */
+    --card-foreground: 225 25% 15%; /* Dark gray-blue text on cards */
+    --popover: 0 0% 100%; /* White popovers */
+    --popover-foreground: 225 25% 15%; /* Dark gray-blue text on popovers */
+    --primary: 234 100% 76%; /* #8490FF */
+    --primary-foreground: 0 0% 10%; /* Darker text for light primary */
+    --secondary: 25 58% 31%; /* User's specified brown for .light */
+    --secondary-foreground: 0 0% 98%; /* White text on secondary */
+    --muted: 225 30% 90%; /* Lighter gray for muted backgrounds */
+    --muted-foreground: 225 15% 50%; /* Darker gray for muted text */
+    --accent: 210 13% 73%; /* #b2bec3 Soft Lavender */
+    --accent-foreground: 210 20% 25%; /* Dark gray for text on accent */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 227 20% 85%; /* Slightly darker border than background */
+    --input: 227 30% 92%; /* Slightly darker than background for input fields */
+    --ring: 234 100% 76%; /* #8490FF for focus rings */
+    /* --radius: 0.5rem; /* Inherited from :root */
+
+    --sidebar-background: 0 0% 98%; /* Light sidebar for light theme */
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 234 100% 76%; /* #8490FF */
+    --sidebar-primary-foreground: 0 0% 10%; /* Darker text for light primary */
+    --sidebar-accent: 240 4.8% 90.9%; /* Lighter accent for sidebar */
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 85%; /* Lighter border for sidebar */
+    --sidebar-ring: 234 100% 76%; /* #8490FF */
+
+    /* Gradient from old purple (#5D2DE6 which is hsl(253, 78%, 54%)) to current accent */
+    --gradient-main: linear-gradient(to right, hsl(253, 78%, 54%), hsl(var(--accent)));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-primary-sans);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary-sans);
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-6 py-16 md:px-12 md:py-24 lg:px-24 lg:py-32;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-12 relative;
+  }
+
+  .section-title::after {
+    content: "";
+    @apply absolute left-0 -bottom-3 h-1 w-24;
+    background-image: var(--gradient-main);
+  }
+  
+  .section-subtitle {
+    @apply text-xl md:text-2xl lg:text-3xl font-medium mb-8 text-accent;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-main);
+  }
+  
+  .button-primary {
+    @apply px-6 py-3 rounded-md text-primary-foreground font-medium transition-all duration-300 hover:opacity-90 hover:scale-105;
+    background-image: var(--gradient-main);
+  }
+
+  .button-secondary {
+    @apply px-6 py-3 rounded-md bg-secondary text-secondary-foreground font-medium transition-all duration-300 hover:opacity-90 hover:scale-105;
+  }
+
+  .button-outline {
+    @apply px-6 py-3 rounded-md border border-border bg-transparent text-foreground font-medium transition-all duration-300 hover:border-primary hover:text-primary;
+  }
+
+  .animate-fade-in {
+    opacity: 0;
+    transform: translateY(2rem); /* 32px, same as translate-y-8 */
+    transition-property: opacity, transform;
+    transition-duration: 700ms;
+    transition-timing-function: ease-out; /* Custom timing or Tailwind's ease-out */
+  }
+
+  .animate-fade-in.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .resize-none {
+    resize: none;
+  }
+}
+
